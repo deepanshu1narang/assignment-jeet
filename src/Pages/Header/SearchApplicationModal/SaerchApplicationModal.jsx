@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { notifications } from '@mantine/notifications';
 import { IconCheck, IconX } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom'
-import { backendBaseURL, getHeader } from '../../../Utils/connection';
+import { baseUrl, getHeader } from '../../../Utils/connection';
 const SearchApplicationModal = ({ }) => {
   const { classes, theme } = useStyles(useStyles);
   const [inputId, setInputId] = useState('');
@@ -28,7 +28,7 @@ const SearchApplicationModal = ({ }) => {
   // function to search application Id once the user click on search button of the Modal.
   const searchById = async () => {
     // do fetch call to get the details
-    const apiResp = await fetch(`${backendBaseURL}/user/details/${inputId}`, {
+    const apiResp = await fetch(`${baseUrl}/user/details/${inputId}`, {
       method: 'GET',
       headers: getHeader()
     });

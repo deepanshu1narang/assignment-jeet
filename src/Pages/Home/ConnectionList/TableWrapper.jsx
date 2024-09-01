@@ -5,17 +5,17 @@ import { useEffect, useState } from 'react';
 import filter from "../../../assets/icons/filterIcon.svg";
 import SearchIcon from '../../../assets/icons/search.svg';
 import { data, statusClass } from './properties';
-import { backendBaseURL, getHeader } from '../../../Utils/connection';
-import FilterModal from '../FilterModal';
+import { baseUrl, getHeader } from '../../../Utils/connection';
+import FilterModal from '../FilterModal/FilterModal';
 import ConnectionTable from './ConnectionTable';
 
-function ConnectionList() {
+function TableWrapper() {
     const { classes, theme } = useStyles(useStyles)
     const [activePage, setActivePage] = useState(1);
     const [entries, setEntries] = useState([]);
     const [pageLoadEntries, setPageLoadEntries] = useState([]);
     const [totalPage, setTotalPage] = useState(1);
-    const [pageSize, setPageSize] = useState(50);
+    const [pageSize] = useState(50);
     const [openFilterModal, setOpenFilterModal] = useState(false);
     const [filteredValue, setFilteredValue] = useState([null, null]);
     const [scrolledToEnd, setScrolledToEnd] = useState(false);
@@ -25,9 +25,6 @@ function ConnectionList() {
     params.append('page', activePage)
     params.append('pSize', pageSize)
 
-    const pageChangeHandler = (page) => {
-        setActivePage(page)
-    }
 
     const fetchConnectionList = async (isReset) => {
         // set the filer date range if it is applied
@@ -41,7 +38,7 @@ function ConnectionList() {
             setEntries(cacheListing[params]);
             return;
         }
-        const apiResp = await fetch(`${backendBaseURL}/user/list?` + params.toString(), {
+        const apiResp = await fetch(`${baseUrl}/user/list?` + params.toString(), {
             method: 'GET',
             headers: getHeader(),
 
@@ -110,26 +107,11 @@ function ConnectionList() {
                 </Box>
             </Box>
             <Box className={classes.tableContainer}>
-                {/* <Table className={classes.table}>
-                    <thead className={classes.tableHead}>
-                        <tr >
-                            {data.tableHeading.map(heading => {
-                                return <th className={classes.columnHeading}>{heading}</th>
-                            })}
-                        </tr>
-                    </thead>
-                    <tbody>{rows}</tbody>
-                </Table> */}
                 <ConnectionTable rows={entries} data={data} statusClass={statusClass} activePage={activePage} pageSize={pageSize} scrolledToEnd={scrolledToEnd} loadMore={loadMore} setScrolledToEnd={setScrolledToEnd} />
             </Box>
-            {/* {
-                rows.length === 0 ? <p className='no-record-found'>{"No record found"}</p>
-                    :
-                    <Pagination size={"md"} defaultValue={activePage} onChange={pageChangeHandler} className={classes.pagination} siblings={1} total={totalPage} />
-            } */}
             <FilterModal openFilterModal={openFilterModal} setOpenFilterModal={setOpenFilterModal} applyFilter={AppliedDateFilter} filteredValue={filteredValue} setFilteredValue={setFilteredValue} setActivePage={setActivePage} />
         </Box>
     );
 }
 
-export default ConnectionList;
+export default TableWrapper;

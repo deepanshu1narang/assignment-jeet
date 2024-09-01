@@ -4,10 +4,10 @@ import { MantineProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
 import themeConfiguration from './styles/theme';
 import { lazy } from 'react';
-import Header from './Pages/Header';
+import Header from './Pages/Header/Header';
 
-const Home = lazy(() => import('./Pages/Home'));
-const ConnectionDetails = lazy(() => import('./Pages/ConnectionDetails'));
+const Home = lazy(() => import('./Pages/Home/Home'));
+const ConnectionDetails = lazy(() => import('./Pages/ConnectionDetails/ConnectionDetails'));
 // const Header = lazy(() => ('./Pages/Header'));
 function App() {
   return (

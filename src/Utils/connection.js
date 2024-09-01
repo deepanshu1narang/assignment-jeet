@@ -1,4 +1,4 @@
-const backendBaseURL = 'http://localhost:3001';
+const baseUrl = 'http://localhost:3001';
 
 const getHeader = () => {
   return {
@@ -6,4 +6,4 @@ const getHeader = () => {
     'Content-Type': 'application/json',
   };
 };
-export { backendBaseURL, getHeader };
+export { baseUrl, getHeader };

@@ -12,9 +12,9 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { backendBaseURL, getHeader } from '../../../Utils/connection';
+import { baseUrl, getHeader } from '../../../Utils/connection';
 import { MonthPickerInput } from '@mantine/dates';
-function ConnectionChart() {
+function BarChart() {
     const { classes, theme } = useStyles(useStyles);
     const [dashboardData, setDashboardData] = useState({ datasets: [], labels: ['January', 'February', 'March', 'April', 'May'] });
     let firstDate = new Date(2021, 5, 28);
@@ -86,7 +86,7 @@ function ConnectionChart() {
         body.endMonth = endDate.getMonth();
         body.endYear = endDate.getFullYear()
         setError('');
-        const apiResp = await fetch(`${backendBaseURL}/user/dashboard/`, {
+        const apiResp = await fetch(`${baseUrl}/user/dashboard/`, {
             method: 'POST',
             body: JSON.stringify(body),
             headers: getHeader()
@@ -171,4 +171,4 @@ function ConnectionChart() {
     );
 }
 
-export default ConnectionChart;
+export default BarChart;

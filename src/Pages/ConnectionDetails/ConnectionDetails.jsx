@@ -6,7 +6,7 @@ import { data, statusClass, demoDetails } from './properties'
 import { DateInput } from '@mantine/dates';
 import { useForm } from '@mantine/form';
 import dayjs from 'dayjs';
-import { backendBaseURL, getHeader } from '../../Utils/connection';
+import { baseUrl, getHeader } from '../../Utils/connection';
 import { notifications } from '@mantine/notifications';
 import { IconCheck, IconX } from '@tabler/icons-react';
 const ConnectionDetails = () => {
@@ -24,7 +24,7 @@ const ConnectionDetails = () => {
 
 
 
-    const apiResp = await fetch(`${backendBaseURL}/user/details/${id}`, {
+    const apiResp = await fetch(`${baseUrl}/user/details/${id}`, {
       method: 'GET',
       headers: getHeader()
     });
@@ -136,7 +136,7 @@ const ConnectionDetails = () => {
         body[i] = form.values[i];
       }
     }
-    const apiResp = await fetch(`${backendBaseURL}/user/edit`, {
+    const apiResp = await fetch(`${baseUrl}/user/edit`, {
       method: 'PUT',
       headers: getHeader(),
       body: JSON.stringify(body)
