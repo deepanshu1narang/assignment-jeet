@@ -272,6 +272,8 @@ const ConnectionDetails = () => {
                   <Select
                     className={classes.textInput}
                     variant="unstyled"
+                    // disabled
+                    readOnly
                     data={[
                       { value: 'AADHAR', label: 'AADHAR' },
                       { value: 'PAN', label: 'PAN' },
@@ -286,6 +288,8 @@ const ConnectionDetails = () => {
                   <TextInput
 
                     className={classes.textInput}
+                    // disabled
+                    readOnly
                     variant="unstyled"
                     {...form.getInputProps("ID_Number")}
                   />
