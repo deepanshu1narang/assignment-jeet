@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import filter from "../../../assets/icons/filterIcon.svg";
 import SearchIcon from '../../../assets/icons/search.svg';
 import { data, statusClass } from './properties';
-import { baseUrl, getHeader } from '../../../Utils/connection';
+import { baseUrl, getHeader } from '../../../Utils/apiConnection';
 import FilterModal from '../FilterModal/FilterModal';
 import ConnectionTable from './ConnectionTable';
 

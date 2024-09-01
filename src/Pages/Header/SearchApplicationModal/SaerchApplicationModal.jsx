@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { notifications } from '@mantine/notifications';
 import { IconCheck, IconX } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom'
-import { baseUrl, getHeader } from '../../../Utils/connection';
+import { baseUrl, getHeader } from '../../../Utils/apiConnection';
 const SearchApplicationModal = ({ }) => {
   const { classes, theme } = useStyles(useStyles);
   const [inputId, setInputId] = useState('');

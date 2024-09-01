@@ -6,7 +6,7 @@ import { data, statusClass, demoDetails } from './properties'
 import { DateInput } from '@mantine/dates';
 import { useForm } from '@mantine/form';
 import dayjs from 'dayjs';
-import { baseUrl, getHeader } from '../../Utils/connection';
+import { baseUrl, getHeader } from '../../Utils/apiConnection';
 import { notifications } from '@mantine/notifications';
 import { IconCheck, IconX } from '@tabler/icons-react';
 const ConnectionDetails = () => {
@@ -110,26 +110,7 @@ const ConnectionDetails = () => {
   })
 
   const updateForm = async () => {
-    const body = {
-      // ID:  form.values.ID,
-      // Applicant_Name:form.values.Applicant_Name,
-      //     Gender: Gender,
-      //     District:District,
-      //     State: State,
-      //     Pincode: Pincode,
-      //     Ownership: Ownership,
-      //     // GovtID_Type: '',
-      //     // ID_Number: null,
-      //     Category: Category,
-      //     Load_Applied: Load_Applied,
-      //    Date_of_Application: Date_of_Application,
-      //     Date_of_Approval: Date_of_Approval,
-      //     Modified_Date: Modified_Date,
-      //     Status: Status,
-      //     Reviewer_ID: Reviewer_ID,
-      //     Reviewer_Name: Reviewer_Name,
-      //     Reviewer_Comments: Reviewer_Comments
-    }
+    const body = {}
     const isAllowed = ['ID', 'Applicant_Name', 'Gender', 'District', 'State', 'Pincode', 'Ownership', 'Category', 'Load_Applied', 'Date_of_Application', 'Date_of_Approval', 'Modified_Date', 'Status', 'Reviewer_ID', 'Reviewer_Name', 'Reviewer_Comments'];
     for (let i in form.values) {
       if (isAllowed.includes(i) && form.values[i]) {
